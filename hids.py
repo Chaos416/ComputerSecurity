@@ -8,17 +8,20 @@ import os
 import sys
 from datetime import datetime
 
-# Import group members' logging and alerting module (Requirements C & D)
-from hids_logging import write_log, send_email_alert
+# Import logging module (Requirement C) 
+from logging_module import write_log
 
-# Import group member's file integrity module (Requirement A)
+# Import email alert module (Requirement D) 
+from email_alerts import send_email_alert
+
+# Import file integrity module (Requirement A) 
 from file_integrity import scan_directory, load_baseline, save_baseline, compare_files
 
-# Import group member's SSH detection module (Requirement B)
+# Import SSH detection module (Requirement B) 
 from ssh_detection import check_ssh_bruteforce
 
 # Configuration
-MONITOR_DIR = "/etc"  
+MONITOR_DIR = "/etc"
 BASELINE_FILE = "baseline.json"
 
 def run_file_integrity():
@@ -86,6 +89,7 @@ def run_ssh_check():
     print("\n[2/2] Running SSH Brute Force Detection...")
     print("-" * 40)
     
+    # Call the SSH detection function from group member's module
     # The function should handle its own logging and alerts
     check_ssh_bruteforce()
 
